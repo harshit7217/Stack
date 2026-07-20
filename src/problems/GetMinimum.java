@@ -12,6 +12,8 @@ public class GetMinimum {
         push(4);
         push(1);
         push(5);
+        System.out.println(stack.toString());
+        System.out.println(minStack.toString());
 
         System.out.println("Min Element: "+ getMinimum());
 
@@ -20,16 +22,28 @@ public class GetMinimum {
 
         System.out.println("min Element: "+ getMinimum());
     }
+//     Space Complexity is too high
+//    public static int pop(){
+//        if(stack.isEmpty()) return Integer.MAX_VALUE;
+//        minStack.pop();
+//        return stack.pop();
+//    }
 
-    public static int pop(){
+//    Optimized Space Complexity
+    private static int pop(){
         if(stack.isEmpty()) return Integer.MAX_VALUE;
-        minStack.pop();
+        int minTop = minStack.peek();
+        int elementTop = stack.peek();
+        if(minTop == elementTop) minStack.pop();
         return stack.pop();
     }
 
+
     public static void push(int data){
         stack.push(data);
-        minStack.push(!minStack.isEmpty() ? (data <= minStack.peek() ? data : minStack.peek()) : data);
+        if(minStack.isEmpty() || minStack.peek() >= data){
+            minStack.push(data);
+        }
     }
 
     public static int getMinimum(){
