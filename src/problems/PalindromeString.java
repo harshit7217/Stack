@@ -1,6 +1,6 @@
 package problems;
 
-public class PlaindromeString {
+public class PalindromeString {
     public static void main(String[] args) {
         String str = "ababXbaba";
         System.out.println(isPalindrome(str));
